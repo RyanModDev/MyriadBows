@@ -26,8 +26,9 @@ public class BowMixin {
 
     @ModifyVariable(method = "onStoppedUsing", at = @At("STORE"), ordinal = 1)
     private boolean a(boolean b, ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
+        int lvl = EnchantmentHelper.getLevel(MyriadBows.ENCHANTMENT, stack);
+
         if (!world.isClient) {
-            int lvl = EnchantmentHelper.getLevel(MyriadBows.ENCHANTMENT, stack);
             boolean ret = b || (lvl > 0 && !shouldConsumeForLevel(lvl));
 
             MyriadBows.LOGGER.info(ret ? "not consuming arrow" : "consuming arrow");
@@ -38,6 +39,6 @@ public class BowMixin {
             return ret;
         }
 
-        return b;
+        return lvl > 0 || b;
     }
 }
