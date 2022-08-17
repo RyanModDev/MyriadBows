@@ -9,7 +9,7 @@ import net.minecraft.entity.EquipmentSlot;
 public class MyriadEnchantment extends Enchantment {
     public MyriadEnchantment() {
         super(
-                Rarity.VERY_RARE,
+                Rarity.RARE,
                 EnchantmentTarget.BOW,
                 new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND}
         );
