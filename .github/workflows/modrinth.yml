@@ -13,7 +13,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 17
-      - uses: ./gradlew build
+      - run: ./gradlew build
       - uses: Kir-Antipov/mc-publish@v3.1
         with:
           modrinth-id: E4fbH01j
