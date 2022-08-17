@@ -4,9 +4,7 @@
 	"package": "dev.ryanccn.myriadbows.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [],
-	"client": [
-		"TitleScreenMixin"
-	],
+	"client": ["BowMixin"],
 	"injectors": {
 		"defaultRequire": 1
 	}
