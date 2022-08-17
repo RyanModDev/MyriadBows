@@ -20,8 +20,11 @@ public class BowMixin {
     private final Random rand = new Random();
 
     private boolean shouldConsumeForLevel(int lvl) {
-        if (lvl == 0) return true;
-        return rand.nextFloat() < 0.1;
+        if (lvl == 1) return rand.nextFloat() < 0.3;
+        else if (lvl == 2) return rand.nextFloat() < 0.2;
+        else if (lvl == 3) return rand.nextFloat() < 0.1;
+
+        return true;
     }
 
     @ModifyVariable(method = "onStoppedUsing", at = @At("STORE"), ordinal = 1)
@@ -31,7 +34,6 @@ public class BowMixin {
         if (!world.isClient) {
             boolean ret = b || (lvl > 0 && !shouldConsumeForLevel(lvl));
 
-            MyriadBows.LOGGER.info(ret ? "not consuming arrow" : "consuming arrow");
             if (!ret) {
                 MyriadBows.S2C.sendPacket(stack, Objects.requireNonNull(user.getServer()).getPlayerManager().getPlayer(user.getUuid()));
             }

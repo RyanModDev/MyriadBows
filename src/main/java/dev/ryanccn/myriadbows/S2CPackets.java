@@ -16,7 +16,8 @@ import org.quiltmc.qsl.networking.api.ServerPlayNetworking;
 import org.quiltmc.qsl.networking.api.client.ClientPlayNetworking;
 
 public final class S2CPackets {
-    public S2CPackets() {}
+    public S2CPackets() {
+    }
 
     private static final Identifier COMMS_CHANNEL = new Identifier("myriadbows", "arrow_used");
 
@@ -37,6 +38,11 @@ public final class S2CPackets {
     private void handlePacket(MinecraftClient client, ClientPlayNetworkHandler handler, PacketByteBuf buf, PacketSender responseSender) {
         final var data = buf.readItemStack();
 
-        client.execute(() -> data.decrement(1));
+        client.execute(() -> {
+            data.decrement(1);
+            if (data.isEmpty() && client.player != null) {
+                client.player.getInventory().removeOne(data);
+            }
+        });
     }
 }

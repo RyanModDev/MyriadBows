@@ -8,17 +8,26 @@ import net.minecraft.entity.EquipmentSlot;
 
 public class MyriadEnchantment extends Enchantment {
     public MyriadEnchantment() {
-        super(Rarity.COMMON, EnchantmentTarget.BOW, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
+        super(
+                Rarity.VERY_RARE,
+                EnchantmentTarget.BOW,
+                new EquipmentSlot[]{EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND}
+        );
     }
 
     @Override
     public int getMinPower(int level) {
-        return 1;
+        return 10;
+    }
+
+    @Override
+    public int getMaxPower(int level) {
+        return 40;
     }
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return 3;
     }
 
     public boolean canAccept(Enchantment other) {

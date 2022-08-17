@@ -2,8 +2,7 @@ name: Publish to Modrinth
 
 on:
   push:
-    tags: ['*']
-  workflow_dispatch:
+    tags: [ '*' ]
 
 jobs:
   modrinth:
