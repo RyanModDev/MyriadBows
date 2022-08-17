@@ -1,8 +1,8 @@
 name: Publish to Modrinth
 
 on:
-  push:
-    tags: [ '*' ]
+  release:
+    types: [ published ]
 
 jobs:
   modrinth:
@@ -13,6 +13,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 17
+
       - run: ./gradlew build
       - uses: Kir-Antipov/mc-publish@v3.1
         with:
