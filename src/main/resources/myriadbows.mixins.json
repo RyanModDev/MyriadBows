@@ -3,8 +3,9 @@
 	"minVersion": "0.8",
 	"package": "dev.ryanccn.myriadbows.mixin",
 	"compatibilityLevel": "JAVA_17",
-	"mixins": [],
-	"client": ["BowMixin"],
+	"mixins": ["BowMixin"],
+    "server": [],
+	"client": [],
 	"injectors": {
 		"defaultRequire": 1
 	}
