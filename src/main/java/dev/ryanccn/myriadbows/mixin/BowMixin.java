@@ -1,6 +1,7 @@
 package dev.ryanccn.myriadbows.mixin;
 
 import dev.ryanccn.myriadbows.MyriadBows;
+import dev.ryanccn.myriadbows.MyriadBowsClient;
 
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
@@ -35,7 +36,7 @@ public class BowMixin {
             boolean ret = b || (lvl > 0 && !shouldConsumeForLevel(lvl));
 
             if (!ret) {
-                MyriadBows.S2C.sendPacket(stack, Objects.requireNonNull(user.getServer()).getPlayerManager().getPlayer(user.getUuid()));
+                MyriadBowsClient.S2C.sendPacket(stack, Objects.requireNonNull(user.getServer()).getPlayerManager().getPlayer(user.getUuid()));
             }
 
             return ret;
